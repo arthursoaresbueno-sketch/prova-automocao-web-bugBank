@@ -1,41 +1,38 @@
-# Prova Automação Web – BugBank
+# Prova de Automação Web – BugBank
 
-Automação do fluxo de transferência bancária do [BugBank](https://bugbank.netlify.app/),
-feita com **Java + Selenium + JUnit 5 + Allure**, no mesmo padrão do projeto visto em aula
-(Page Objects, Tasks, Validação e TestCases).
+Projeto de automação de testes do sistema BugBank, desenvolvido com Java, Selenium, JUnit 5 e Allure.
 
-## O que o teste faz
+## O que o teste realiza
 
-1. Acessa `https://bugbank.netlify.app/`
-2. Cadastra **duas contas** com a opção "Criar conta com saldo" (dados gerados com Datafaker)
-3. Entra na **conta 1** e transfere um valor aleatório para a **conta 2**
-4. Valida o saldo da conta 1 na home e no **extrato** (saldo e transferência listada)
-5. Sai, entra na **conta 2** e valida no **extrato** que o valor foi recebido
+1. Acessa o site BugBank.
+2. Cadastra duas contas com saldo.
+3. Realiza uma transferência entre as contas.
+4. Verifica o saldo e o extrato da conta de origem.
+5. Verifica o recebimento da transferência na conta de destino.
 
-Os dados das contas (e-mail, senha, número da conta, valor, descrição) ficam em
-`src/main/resources/Properties/conta.properties` durante a execução.
+## Tecnologias utilizadas
 
-## Estrutura
+- Java
+- Selenium
+- JUnit 5
+- Maven
+- Allure
+- Datafaker
 
-```
-src/main/java/Framework      -> driver, waits, TestBase, utilitários (Faker, Moeda, screenshot)
-src/main/resources/Properties-> url e dados das contas
-src/test/java/PageObjects    -> elementos de cada tela
-src/test/java/Tasks          -> ações (cadastrar, login, transferir, extrato)
-src/test/java/Validacao      -> asserts + prints no Allure
-src/test/java/TestCases      -> TransferenciaBancariaTest
-```
+## Como executar
 
-## Como rodar
+É necessário ter JDK, Maven e Google Chrome instalados.
 
-Pré-requisitos: JDK (a versão do `pom.xml`, propriedade `maven.compiler.source`), Maven e Google Chrome.
+Para executar os testes:
 
-```
+```bash
 mvn clean test
 ```
 
-Relatório Allure:
+Para visualizar o relatório Allure:
 
-```
+```bash
 mvn allure:serve
 ```
+
+**Site utilizado:** https://bugbank.netlify.app/
